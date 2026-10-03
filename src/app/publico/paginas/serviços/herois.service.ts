@@ -2,17 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class HeroisService {
-private _jsonHeroes = 'assets/herois.json'
+  private readonly jsonHeroes = 'assets/herois.json';
 
-  constructor(
-    private http : HttpClient
-  ) {}
+  constructor(private http: HttpClient) {}
 
-  getHerois ():Observable<any> {
-    return this.http.get(this._jsonHeroes)
+  getHerois(): Observable<string[]> {
+    return this.http.get<string[]>(this.jsonHeroes);
   }
 }
