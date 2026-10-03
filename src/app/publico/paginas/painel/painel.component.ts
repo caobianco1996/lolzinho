@@ -8,10 +8,18 @@ import { HeroisService } from '../serviços/herois.service';
 })
 export class PainelComponent implements OnInit {
   heroes: string[] = [];
+  searchTerm = '';
   loading = true;
   error = '';
 
   constructor(private heroisService: HeroisService) {}
+
+  get filteredHeroes(): string[] {
+    const query = this.searchTerm.trim().toLocaleLowerCase();
+    return this.heroes.filter((hero) =>
+      hero.toLocaleLowerCase().includes(query)
+    );
+  }
 
   ngOnInit(): void {
     this.heroisService.getHerois().subscribe({
