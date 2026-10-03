@@ -1,6 +1,6 @@
 # Catálogo de campeões — protótipo Angular
 
-Aplicação Angular 14 com catálogo local e busca pelo nome de campeões de League of Legends. Os dados em src/assets/herois.json foram obtidos do Data Dragon versão 12.6.1 e estão desatualizados.
+Aplicação Angular 14 com catálogo local e busca pelo nome de campeões de League of Legends. Os dados em src/assets/herois.json vieram do Data Dragon versão 12.6.1 e estão desatualizados.
 
 ## Requisitos e execução
 
@@ -23,8 +23,10 @@ npm run build
 npm test
 ~~~
 
-O teste usa o runner Karma; pode ser necessário um navegador compatível. Na verificação manual, digite parte do nome de um campeão no campo de busca e confirme que a lista e a contagem filtram os resultados; limpe o campo para ver o catálogo completo.
+O teste usa Karma e pode exigir um navegador compatível. Na verificação manual, busque parte do nome de um campeão e confirme a filtragem e contagem; limpe o campo para exibir o catálogo todo.
 
-## Dados e ativos
+## Dados e imagens
 
-Ao atualizar o catálogo, mantenha dados e imagens na mesma versão e registre fonte e data. League of Legends e seus ativos pertencem aos respectivos titulares; confira os termos aplicáveis antes de publicar.
+O protótipo exibe nomes e não usa imagens locais. Os 6.060 arquivos de skins que estavam em src/assets/champion não eram referenciados pela aplicação e foram removidos da versão atual para reduzir o repositório. O histórico Git anterior ainda contém esses arquivos. Se imagens forem adicionadas depois, prefira carregar apenas os ícones necessários de uma versão definida do Data Dragon e registre fonte e data.
+
+League of Legends e seus ativos pertencem aos respectivos titulares; confira os termos aplicáveis antes de publicar.
