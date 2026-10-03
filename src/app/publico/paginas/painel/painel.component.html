@@ -4,7 +4,21 @@
   <p *ngIf="loading" role="status">Carregando campeões...</p>
   <p *ngIf="error" role="alert">{{ error }}</p>
 
-  <ul *ngIf="!loading && !error">
-    <li *ngFor="let hero of heroes">{{ hero }}</li>
-  </ul>
+  <ng-container *ngIf="!loading && !error">
+    <label for="champion-search">Buscar campeão pelo nome</label>
+    <input
+      id="champion-search"
+      type="search"
+      [(ngModel)]="searchTerm"
+      autocomplete="off"
+      aria-describedby="champion-count"
+    />
+    <p id="champion-count" role="status">
+      {{ filteredHeroes.length }} campeão(ões) encontrado(s).
+    </p>
+    <p *ngIf="filteredHeroes.length === 0">Nenhum campeão corresponde à busca.</p>
+    <ul *ngIf="filteredHeroes.length > 0">
+      <li *ngFor="let hero of filteredHeroes">{{ hero }}</li>
+    </ul>
+  </ng-container>
 </main>
