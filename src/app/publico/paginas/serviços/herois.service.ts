@@ -1,18 +1,20 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
+interface ChampionData {
+  data: Record<string, { id: string; name: string }>;
+}
+
+@Injectable({ providedIn: 'root' })
 export class HeroisService {
-private _jsonHeroes = 'assets/herois.json'
+  private readonly jsonHeroes = 'assets/herois.json';
 
-  constructor(
-    private http : HttpClient
-  ) {}
+  constructor(private http: HttpClient) {}
 
-  getHerois ():Observable<any> {
-    return this.http.get(this._jsonHeroes)
+  getHerois(): Observable<string[]> {
+    return this.http.get<ChampionData>(this.jsonHeroes).pipe(
+      map((catalog) => Object.values(catalog.data).map((champion) => champion.name))
+    );
   }
 }

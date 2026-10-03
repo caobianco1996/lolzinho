@@ -1,2 +1,10 @@
-<p>painel works!</p>
-<p>painel works!</p>
+<main>
+  <h1>Campeões</h1>
+
+  <p *ngIf="loading" role="status">Carregando campeões...</p>
+  <p *ngIf="error" role="alert">{{ error }}</p>
+
+  <ul *ngIf="!loading && !error">
+    <li *ngFor="let hero of heroes">{{ hero }}</li>
+  </ul>
+</main>
