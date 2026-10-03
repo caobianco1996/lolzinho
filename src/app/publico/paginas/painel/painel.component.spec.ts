@@ -1,4 +1,3 @@
-import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { of, throwError } from 'rxjs';
 import { HeroisService } from '../serviços/herois.service';
@@ -12,7 +11,6 @@ describe('PainelComponent', () => {
     service = jasmine.createSpyObj('HeroisService', ['getHerois']);
     await TestBed.configureTestingModule({
       declarations: [PainelComponent],
-      imports: [HttpClientTestingModule],
       providers: [{ provide: HeroisService, useValue: service }]
     }).compileComponents();
     fixture = TestBed.createComponent(PainelComponent);
