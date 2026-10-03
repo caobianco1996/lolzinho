@@ -1,6 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
+
+interface ChampionData {
+  data: Record<string, { id: string; name: string }>;
+}
 
 @Injectable({ providedIn: 'root' })
 export class HeroisService {
@@ -9,6 +13,8 @@ export class HeroisService {
   constructor(private http: HttpClient) {}
 
   getHerois(): Observable<string[]> {
-    return this.http.get<string[]>(this.jsonHeroes);
+    return this.http.get<ChampionData>(this.jsonHeroes).pipe(
+      map((catalog) => Object.values(catalog.data).map((champion) => champion.name))
+    );
   }
 }
